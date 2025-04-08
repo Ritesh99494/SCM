@@ -29,7 +29,9 @@ public class pageController {
         return "about";
 }
 @GetMapping("/register")
-public String register() {
+public String register(Model model) {
+    UserForm  userForm= new userForm();
+    model.addAttribute(attributeName:"userForm",userForm);
     return "register";
 }
 //processing register
