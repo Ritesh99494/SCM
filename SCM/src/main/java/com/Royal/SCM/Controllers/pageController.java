@@ -5,6 +5,9 @@ package com.Royal.SCM.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class pageController {
@@ -25,4 +28,11 @@ public class pageController {
         System.out.println("about page");
         return "about";
 }
+@GetMapping("/register")
+public String register() {
+    return "register";
+}
+//processing register
+
+
 }

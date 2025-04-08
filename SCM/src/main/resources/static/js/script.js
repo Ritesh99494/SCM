@@ -41,7 +41,7 @@ function getTheme() {
   let theme = localStorage.getItem("theme");
   return theme ? theme : "light";
 }
-
+ 
 //change current page theme
 function changePageTheme(theme, oldTheme) {
   //localstorage mein update karenge
