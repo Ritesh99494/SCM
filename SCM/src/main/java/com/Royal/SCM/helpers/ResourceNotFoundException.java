@@ -1,10 +1,10 @@
 package com.Royal.SCM.helpers;
 
-public class ResourceNotFoundException {
+public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {
-        super();
+        super(message);
     }
     public ResourceNotFoundException() {
-        super();
+        super("Resource not found");
     }
 }
