@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.Royal.SCM.entities.User;
 import com.Royal.SCM.forms.UserForm;
+import com.Royal.SCM.helpers.Message;
+import com.Royal.SCM.helpers.MessageType;
 import com.Royal.SCM.servises.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -78,6 +80,13 @@ public String register(Model model) {
 
         User savedUser = userService.saveUser(user);
         System.out.println("User saved: " + savedUser);
+        // message = "Registration Successful"
+
+        // add the message:
+
+        Message message = Message.builder().content("Registration Successful").type(MessageType.green).build();
+
+        session.setAttribute("message", message);
 
         // redirectto login page
         return "redirect:/register";
