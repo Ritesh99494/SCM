@@ -59,9 +59,9 @@ public String register(Model model) {
         System.out.println(userForm);
 
         // validate form data
-      
-
-        // TODO::Validate userForm[Next Video]
+        if (rBindingResult.hasErrors()) {
+            return "register";
+        }
 
         // save to database
 
