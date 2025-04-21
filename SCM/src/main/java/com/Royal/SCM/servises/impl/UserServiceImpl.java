@@ -1,6 +1,7 @@
 package com.Royal.SCM.servises.impl;
 
 import com.Royal.SCM.entities.User;
+import com.Royal.SCM.helpers.APPConstants;
 import com.Royal.SCM.helpers.ResourceNotFoundException;
 import com.Royal.SCM.repsitories.UserRepo;
 import com.Royal.SCM.servises.UserService;
@@ -11,6 +12,7 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -19,12 +21,21 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Override
     public User saveUser(User user) {
         String userId =UUID.randomUUID().toString();
         user.setUserId(userId);
+         // password encode
+        // user.setPassword(userId);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // set the user role
+
+        user.setRoleList(List.of(APPConstants.ROLE_USER));
+        logger.info(user.getProvider().toString());
        return userRepo.save(user);
     }
 
