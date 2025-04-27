@@ -43,6 +43,28 @@ public class pageController {
         System.out.println("about page");
         return "about";
 }
+
+  // services
+
+  @RequestMapping("/services")
+  public String servicesPage() {
+      System.out.println("services page loading");
+      return "services";
+  }
+
+  // contact page
+
+  @GetMapping("/contact")
+  public String contact() {
+      return new String("contact");
+  }
+
+  // this is showing login page
+  @GetMapping("/login")
+  public String login() {
+      return new String("login");
+  }
+  // registration page
 @GetMapping("/register")
 public String register(Model model) {
     UserForm  userForm= new UserForm();
