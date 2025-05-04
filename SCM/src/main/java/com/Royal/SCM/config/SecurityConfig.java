@@ -41,6 +41,8 @@ public class SecurityConfig {
     // }
     @Autowired
     private SecurityCustomUserDetailService userDetailService;
+    @Autowired
+    private OAuthAuthenicationSuccessHandler handler;
 
      // configuraiton of authentication providerfor spring security
     @Bean
