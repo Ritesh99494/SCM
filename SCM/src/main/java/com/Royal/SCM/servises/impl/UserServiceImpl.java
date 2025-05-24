@@ -89,8 +89,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByEmail(String email) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUserByEmail'");
+     return userRepo.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
     
 
