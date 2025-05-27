@@ -16,13 +16,12 @@
         <div data-th-replace="~{user/sidebar :: sidebar}"></div>
       </div>
 
-      <div class="sm:pl-64 pt-20" style="height: 1000px">
-        <div class="grid grid-cols-12">
-          <div class="col-span-3"></div>
-          <div class="col-span-12 md:col-span-6">
-            <div
-              class="card block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-            >
+      <div class="sm:pl-64 pt-20">
+        <div class="container mx-auto px-4 max-w-4xl">
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12">
+        <div class="card block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          
               <div data-th-replace="message::messagebox"></div>
 
               <h1 class="text-2xl font-semibold">Add New Contact</h1>
@@ -179,7 +178,7 @@
                         <input
                           data-th-field="*{websiteLink}"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="htt://learncodewithdurgesh.com/"
+                          placeholder="http://website.com/"
                         />
                       </div>
                     </div>
@@ -197,7 +196,7 @@
                           type="text"
                           data-th-field="*{linkedInLink}"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="htt://learncodewithdurgesh.com/"
+                          placeholder="http://linkedin.com/"
                         />
                       </div>
                     </div>
@@ -248,23 +247,24 @@
                     >Is this contact is your favorite one ?</label
                   >
                 </div>
-
-                <div class="button-container text-center">
-                  <button
-                    type="submit"
-                    class="px-3 py-2 dark:bg-blue-600 hover:dark:bg-blue-700 rounded bg-black text-white"
-                  >
-                    Add Contact
-                  </button>
-                  <button
-                    type="reset"
-                    class="px-3 py-2 dark:bg-blue-600 hover:dark:bg-blue-700 rounded bg-black text-white"
-                  >
-                    Reset
-                  </button>
-                </div>
+<div class="flex justify-center space-x-4 mt-6 mb-4">
+    <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+    >
+        Add Contact
+    </button>
+    <button
+        type="reset"
+        class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+    >
+        Reset
+    </button>
+</div>
+                
               </form>
             </div>
+          </div>
           </div>
         </div>
       </div>
