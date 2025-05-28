@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.Royal.SCM.entities.Contact;
 import com.Royal.SCM.entities.User;
 import com.Royal.SCM.helpers.ResourceNotFoundException;
 import com.Royal.SCM.repsitories.ContactRepo;
 import com.Royal.SCM.servises.ContactService;
-
+@Service
 public class ContactServiceImpl implements ContactService {
  @Autowired
     private ContactRepo contactRepo;
