@@ -2,6 +2,7 @@ package com.Royal.SCM.servises.impl;
 
 import java.io.IOException;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Royal.SCM.helpers.APPConstants;
@@ -9,7 +10,7 @@ import com.Royal.SCM.servises.ImageService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
-
+@Service
 public class ImageServiceImpl implements ImageService {
 
 private Cloudinary cloudinary;
