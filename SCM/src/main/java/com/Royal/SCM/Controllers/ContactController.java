@@ -20,6 +20,7 @@ import com.Royal.SCM.helpers.Helper;
 import com.Royal.SCM.helpers.Message;
 import com.Royal.SCM.helpers.MessageType;
 import com.Royal.SCM.servises.ContactService;
+import com.Royal.SCM.servises.ImageService;
 import com.Royal.SCM.servises.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -34,8 +35,8 @@ public class ContactController {
     private ContactService contactService;
     @Autowired
     private UserService userService;
-
-
+   @Autowired
+    private ImageService imageService;
 
     @RequestMapping("/add")
     // add contact page: handler
@@ -83,8 +84,8 @@ public class ContactController {
 
         if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
             String filename = UUID.randomUUID().toString();
-           // String fileURL = imageService.uploadImage(contactForm.getContactImage(), filename);
-            //contact.setPicture(fileURL);
+           String fileURL = imageService.uploadImage(contactForm.getContactImage(), filename);
+            contact.setPicture(fileURL);
             contact.setCloudinaryImagePublicId(filename);
 
         }
