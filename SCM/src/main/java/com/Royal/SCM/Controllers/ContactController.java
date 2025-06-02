@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
@@ -16,6 +17,7 @@ import org.slf4j.Logger;
 import com.Royal.SCM.entities.Contact;
 import com.Royal.SCM.entities.User;
 import com.Royal.SCM.forms.ContactForm;
+import com.Royal.SCM.helpers.APPConstants;
 import com.Royal.SCM.helpers.Helper;
 import com.Royal.SCM.helpers.Message;
 import com.Royal.SCM.helpers.MessageType;
@@ -103,5 +105,18 @@ public class ContactController {
                         .build());
 
         return "redirect:/user/contacts/add";
-}}
+}
+//view contacts
+ public String viewContacts(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = APPConstants.PAGE_SIZE + "") int size,
+            @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction, Model model,
+            Authentication authentication) {
+                
+                return direction;
+            }
+
+
+}
 
