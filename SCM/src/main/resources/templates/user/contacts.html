@@ -124,7 +124,7 @@
                       class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       <img
-                        onerror="this.src='https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png'"
+                        onerror="this.src=''"
                         class="w-10 h-10 rounded-full"
                         data-th-src="@{*{picture}}"
                         src="/docs/images/people/profile-picture-1.jpg"
@@ -229,16 +229,16 @@
                   </ul>
                 </nav>
               </div>
-              <h1
-                class="text-5xl text-center dark:bg-gray-800 dark:text-white bg-white p-4"
-                data-th-if="${pageContact.totalElements<=0}"
+              <p
+                class="text-5xl text-center dark:bg-gray-800 dark:text-white bg-white p-4 text-center"
+                data-th-if="${pageContact.totalElements <=0}"
               >
                 No result found
-              </h1>
+              </p>
             </div>
           </div>
         </div>
-        <div data-th-replace="~{ user/contact_modals :: contact}"></div>
+        <div data-th-replace="~{user/contact_modals :: contact}"></div>
       </div>
     </div>
 
