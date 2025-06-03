@@ -109,6 +109,7 @@ public class ContactController {
         return "redirect:/user/contacts/add";
 }
 //view contacts
+@RequestMapping
  public String viewContacts(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = APPConstants.PAGE_SIZE + "") int size,
