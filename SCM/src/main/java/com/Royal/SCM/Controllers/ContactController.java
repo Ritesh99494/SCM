@@ -1,6 +1,7 @@
 package com.Royal.SCM.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.slf4j.Logger;
 import com.Royal.SCM.entities.Contact;
 import com.Royal.SCM.entities.User;
 import com.Royal.SCM.forms.ContactForm;
+import com.Royal.SCM.forms.ContactSearchForm;
 import com.Royal.SCM.helpers.APPConstants;
 import com.Royal.SCM.helpers.Helper;
 import com.Royal.SCM.helpers.Message;
@@ -113,8 +115,21 @@ public class ContactController {
             @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
             @RequestParam(value = "direction", defaultValue = "asc") String direction, Model model,
             Authentication authentication) {
-                
-                return direction;
+
+                // load all the user contacts
+        String username = Helper.getEmailOfLoggedInUser(authentication);
+
+        User user = userService.getUserByEmail(username);
+
+        Page<Contact> pageContact = contactService.getByUser(user, page, size, sortBy, direction);
+
+        model.addAttribute("pageContact", pageContact);
+        model.addAttribute("pageSize", APPConstants.PAGE_SIZE);
+
+        model.addAttribute("contactSearchForm", new ContactSearchForm());
+
+        return "user/contacts";
+               
             }
 
 
