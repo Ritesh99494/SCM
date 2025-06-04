@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class ContactSearchForm {
 private String field;
-    private String value;
+private String value;
 
 }
