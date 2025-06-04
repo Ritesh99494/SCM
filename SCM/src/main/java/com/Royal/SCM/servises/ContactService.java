@@ -25,6 +25,7 @@ public interface ContactService {
 
     void delete(String id);
 
+    
     // search contact
     Page<Contact> searchByName(String nameKeyword, int size, int page, String sortBy, String order, User user);
 
