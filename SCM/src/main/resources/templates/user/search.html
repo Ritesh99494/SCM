@@ -7,18 +7,19 @@
     <title>Search Contacts</title>
   </head>
   <body>
-    <div id="content">
+    <div id="content" class="flex">
       <!-- sidebar -->
 
       <!-- user is logged in : sidebar -->
 
-      <div th:if="${loggedInUser}">
+      <div th:if="${loggedInUser}" class="fixed left-0 top-0 z-40 h-screen">
         <div data-th-replace="~{user/sidebar :: sidebar}"></div>
       </div>
 
-      <div class="sm:pl-64 pt-20" style="height: 1000px">
+      <div class="flex-1 sm:ml-64 p-4" style="height: 1000px">
         <div class="flex justify-center flex-col items-center">
-          <h1 class="text-5xl">Search Results</h1>
+          <h1 class="text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white">All Your Contacts</h1>
+                <p class="text-center text-gray-600 dark:text-gray-400 mb-8">List of all contacts...</p>
           <p data-th-text="${pageContact.totalElements}+' results found'"></p>
         </div>
 
