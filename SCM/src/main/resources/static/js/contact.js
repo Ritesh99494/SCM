@@ -21,3 +21,19 @@ const options = {
     console.log("modal has been toggled");
   },
 };
+
+// instance options object
+const instanceOptions = {
+  id: "view_contact_mdoal",
+  override: true,
+};
+
+const contactModal = new Modal(viewContactModal, options, instanceOptions);
+
+function openContactModal() {
+  contactModal.show();
+}
+
+function closeContactModal() {
+  contactModal.hide();
+}
