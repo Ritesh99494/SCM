@@ -59,7 +59,11 @@ async function loadContactdata(id){
       contactFavorite.innerHTML = "Not Favorite Contact";
     }
 
-    
+    document.querySelector("#contact_website").href = data.websiteLink;
+    document.querySelector("#contact_website").innerHTML = data.websiteLink;
+    document.querySelector("#contact_linkedIn").href = data.linkedInLink;
+    document.querySelector("#contact_linkedIn").innerHTML = data.linkedInLink;
+    openContactModal();
   } catch (error) {
     console.log("Error: ", error);
   }
