@@ -41,4 +41,26 @@ function closeContactModal() {
 async function loadContactdata(id){
   //function call to load data
   console.log(id);
+
+  try {
+    const data = await (await fetch(`${baseURL}/api/contacts/${id}`)).json();
+    console.log(data);
+    document.querySelector("#contact_name").innerHTML = data.name;
+    document.querySelector("#contact_email").innerHTML = data.email;
+    document.querySelector("#contact_image").src = data.picture;
+    document.querySelector("#contact_address").innerHTML = data.address;
+    document.querySelector("#contact_phone").innerHTML = data.phoneNumber;
+    document.querySelector("#contact_about").innerHTML = data.description;
+    const contactFavorite = document.querySelector("#contact_favorite");
+    if (data.favorite) {
+      contactFavorite.innerHTML =
+        "<i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i>";
+    } else {
+      contactFavorite.innerHTML = "Not Favorite Contact";
+    }
+
+    
+  } catch (error) {
+    console.log("Error: ", error);
+  }
 }
