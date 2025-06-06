@@ -67,4 +67,21 @@ async function loadContactdata(id){
   } catch (error) {
     console.log("Error: ", error);
   }
+  // delete contact
+
+async function deleteContact(id) {  
+  try {
+    const response = await fetch(`${baseURL}/api/contacts/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      console.log("Contact deleted successfully");
+      // Optionally, you can refresh the contact list or perform other actions
+    } else {
+      console.error("Failed to delete contact");
+    }
+  } catch (error) {
+    console.error("Error deleting contact:", error);
+  }
+}
 }
