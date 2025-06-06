@@ -1,6 +1,6 @@
 console.log("Contacts.js");
 // const baseURL = "http://localhost:8081";
-const baseURL = "https://www.scm20.site";
+const baseURL = "https://localhost:8081";
 const viewContactModal = document.getElementById("view_contact_modal");
 
 // options with default values
@@ -38,10 +38,9 @@ function closeContactModal() {
   contactModal.hide();
 }
 
-async function loadContactdata(id){
+async function loadContactdata(id) {
   //function call to load data
   console.log(id);
-
   try {
     const data = await (await fetch(`${baseURL}/api/contacts/${id}`)).json();
     console.log(data);
@@ -67,21 +66,21 @@ async function loadContactdata(id){
   } catch (error) {
     console.log("Error: ", error);
   }
-  // delete contact
-
-async function deleteContact(id) {  
-  try {
-    const response = await fetch(`${baseURL}/api/contacts/${id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      console.log("Contact deleted successfully");
-      // Optionally, you can refresh the contact list or perform other actions
-    } else {
-      console.error("Failed to delete contact");
-    }
-  } catch (error) {
-    console.error("Error deleting contact:", error);
-  }
 }
+
+// delete contact
+
+async function deleteContact(id) {
+  Swal.fire({
+    title: "Do you want to delete the contact?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Delete",
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      const url = `${baseURL}/user/contacts/delete/` + id;
+      window.location.replace(url);
+    }
+  });
 }
