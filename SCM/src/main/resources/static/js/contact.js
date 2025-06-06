@@ -37,3 +37,8 @@ function openContactModal() {
 function closeContactModal() {
   contactModal.hide();
 }
+
+async function loadContactdata(id){
+  //function call to load data
+  console.log(id);
+}
