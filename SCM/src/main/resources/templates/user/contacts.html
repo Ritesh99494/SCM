@@ -173,17 +173,17 @@
                         </a> -->
 
                         <!-- delete contact -->
-                        <button th:onclick="deleteContact([[${c.id}]])">
+                        <button th:onclick="deleteContact([[${c.id}]])" class="text-red-600 hover:text-red-800 mx-1">
                           <i class="fa-solid w-6 h-6 fa-trash"></i>
                         </button>
                         <!-- update contact -->
-                        <a data-th-href="@{'/user/contacts/view/'+*{id}}">
+                        <a data-th-href="@{'/user/contacts/view/'+*{id}}" class="text-blue-600 hover:text-blue-800 mx-1">
                           <i class="fa-solid w-6 h-6 fa-pen"></i
                         ></a>
 
                         <!-- viewcontact -->
-                        <button th:onclick="loadContactdata([[${c.id}]])">
-                          <i class="fa-solid fa-eye"></i>
+                        <button th:onclick="loadContactdata([[${c.id}]])" class="text-gray-600 hover:text-gray-800 mx-1">
+                          <i class="fa-solid w-6 h-6 fa-eye"></i>
                         </button>
                       </div>
                     </td>
