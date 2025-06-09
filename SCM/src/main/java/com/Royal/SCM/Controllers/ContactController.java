@@ -191,6 +191,10 @@ public class ContactController {
         return "redirect:/user/contacts";
     }
 
+// update contact form view
+     public String updateContactFormView(){
 
+         return "user/update_contact_view";
+     }
 }
 
