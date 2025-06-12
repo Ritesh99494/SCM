@@ -90,6 +90,7 @@ public class SecurityConfig {
          httpSecurity.csrf(AbstractHttpConfigurer::disable);
         // oauth configurations
 
+        
         httpSecurity.oauth2Login(oauth -> {
             oauth.loginPage("/login");
             oauth.successHandler(handler);
