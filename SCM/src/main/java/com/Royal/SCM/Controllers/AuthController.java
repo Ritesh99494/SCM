@@ -17,9 +17,12 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/auth")
 public class AuthController {
 
-     @Autowired
+    // verify email
+
+    @Autowired
     private UserRepo userRepo;
-     @GetMapping("/verify-email")
+
+    @GetMapping("/verify-email")
     public String verifyEmail(
             @RequestParam("token") String token, HttpSession session) {
 
@@ -39,6 +42,21 @@ public class AuthController {
                 return "success_page";
             }
 
-}
+            session.setAttribute("message", Message.builder()
+                    .type(MessageType.red)
+                    .content("Email not verified ! Token is not associated with user .")
+                    .build());
+            return "error_page";
+
+        }
+
+        session.setAttribute("message", Message.builder()
+                .type(MessageType.red)
+                .content("Email not verified ! Token is not associated with user .")
+                .build());
+
+        return "error_page";
+    }
+
 }
 
