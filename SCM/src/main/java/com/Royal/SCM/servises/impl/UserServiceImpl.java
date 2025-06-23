@@ -2,8 +2,10 @@ package com.Royal.SCM.servises.impl;
 
 import com.Royal.SCM.entities.User;
 import com.Royal.SCM.helpers.APPConstants;
+import com.Royal.SCM.helpers.Helper;
 import com.Royal.SCM.helpers.ResourceNotFoundException;
 import com.Royal.SCM.repsitories.UserRepo;
+import com.Royal.SCM.servises.EmailService;
 import com.Royal.SCM.servises.UserService;
 import java.util.List;
 import java.util.Optional;
@@ -23,20 +25,34 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+     @Autowired
+    private EmailService emailService;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+     @Autowired
+    private  Helper helper;
 
     @Override
     public User saveUser(User user) {
-        String userId =UUID.randomUUID().toString();
+        // user id : have to generate
+        String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
-         // password encode
+        // password encode
         // user.setPassword(userId);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         // set the user role
 
         user.setRoleList(List.of(APPConstants.ROLE_USER));
+
         logger.info(user.getProvider().toString());
-       return userRepo.save(user);
+        String emailToken = UUID.randomUUID().toString();
+        user.setEmailToken(emailToken);
+        User savedUser = userRepo.save(user);
+        String emailLink = helper.getLinkForEmailVerificatiton(emailToken);
+        emailService.sendEmail(savedUser.getEmail(), "Verify Account : Smart  Contact Manager", emailLink);
+        return savedUser;
+        
     }
 
     @Override
