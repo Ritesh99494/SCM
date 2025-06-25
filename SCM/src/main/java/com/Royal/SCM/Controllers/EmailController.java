@@ -20,6 +20,7 @@ public class EmailController {
     @Autowired
     private JavaMailSender mailSender;
 
+    
   @Value("${spring.mail.username}")
    private String defaultFromEmail;
 
