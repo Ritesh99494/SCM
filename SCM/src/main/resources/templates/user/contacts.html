@@ -112,6 +112,7 @@
                     <th scope="col" class="px-6 py-3">Phone</th>
                     <th scope="col" class="px-6 py-3">Links</th>
                     <th scope="col" class="px-6 py-3">Action</th>
+                    <th scope="col" class="px-6 py-3">Email</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -165,7 +166,9 @@
                           <i class="fa-brands w-6 h-6 fa-linkedin"></i>
                         </a>
                       </div>
+                      
                     </td>
+        
                     <td class="px-6 py-4">
                       <div>
                         <!-- <a data-th-href="@{'/user/contacts/delete/'+*{id}}">
@@ -187,6 +190,17 @@
                         </button>
                       </div>
                     </td>
+<td class="px-6 py-4">
+  <span data-th-text="*{email}"></span>
+  <button
+    type="button"
+    class="ml-2 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-xs"
+    onclick="openEmailModal('[[*{email}]]')"
+    data-th-if="*{email != null and !#strings.isEmpty(email)}"
+  >
+    Send Email
+  </button>
+</td>
                   </tr>
                 </tbody>
               </table>
@@ -239,10 +253,74 @@
             </div>
           </div>
         </div>
+    </div>
+    <div data-th-replace="~{user/contact_modals :: contact}"></div>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black bg-opacity-40">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-lg p-6 relative">
+        <button
+          class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-2xl"
+          onclick="closeEmailModal()"
+          aria-label="Close"
+        >&times;</button>
+        <h2 class="text-2xl font-bold mb-4 text-center">Send Email</h2>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            Recipient Email
+          </label>
+          <input
+            type="email"
+            id="emailModalRecipient"
+            placeholder="Recipient's email address"
+            class="w-full bg-gray-100 dark:bg-gray-700 rounded px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
+            
+          />
+
         </div>
-        <div data-th-replace="~{user/contact_modals :: contact}"></div>
+        <div class="mb-4 flex gap-2">
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+              Intent
+            </label>
+            <input
+              type="text"
+              id="emailModalIntent"
+              placeholder="e.g. invite to meeting"
+              class="w-full rounded px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            />
+          </div>
+          <button
+            type="button"
+            id="generateAiBtn"
+            onclick="generateEmailWithAI()"
+            class="self-end px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Generate with AI
+          </button>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            Message
+          </label>
+          <textarea
+            id="emailModalMessage"
+            rows="6"
+            class="w-full rounded px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            placeholder="Your message will appear here..."
+          ></textarea>
+        </div>
+        <button
+          type="button"
+          onclick="sendEmailFromModal()"
+          class="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 font-semibold"
+        >
+          Send Email
+        </button>
       </div>
     </div>
+  </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
     <script data-th-src="@{'/js/contact.js'}"></script>
@@ -256,5 +334,7 @@
         });
       }
     </script>
+  <script src="/js/email-modal.js"></script>
+  
   </body>
 </html>
