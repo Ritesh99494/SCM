@@ -11,36 +11,68 @@ function closeEmailModal() {
 }
 
 function generateEmailWithAI() {
-  const intent = document.getElementById('emailModalIntent').value;
-  const recipient = document.getElementById('emailModalRecipient').value;
+  const intent = document.getElementById('emailModalIntent').value.trim();
+  const recipient = document.getElementById('emailModalRecipient').value.trim();
   const messageBox = document.getElementById('emailModalMessage');
 
   if (!intent || !recipient) {
-    messageBox.value = "Please enter both intent and recipient.";
+    messageBox.value = "⚠️ Please enter both intent and recipient.";
     return;
   }
 
-  fetch("/api/email/generate", {
+  fetch("http://localhost:8081/api/email/generate", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ recipientName: recipient, intent: intent })
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      recipientName: recipient,
+      intent: intent
+    })
   })
-  .then(response => response.json())
-  .then(data => {
-    messageBox.value = data.message;
-  })
-  .catch(error => {
-    messageBox.value = "Failed to generate email.";
-    console.error(error);
-  });
+    .then(response => {
+      if (!response.ok) throw new Error("AI generation failed");
+      return response.json();
+    })
+    .then(data => {
+      messageBox.value = data.message || "No message generated.";
+    })
+    .catch(error => {
+      messageBox.value = "❌ Failed to generate email.";
+      console.error("AI Error:", error);
+    });
 }
-
-
 function sendEmailFromModal() {
-  const recipient = document.getElementById('emailModalRecipient').value;
-  const intent = document.getElementById('emailModalIntent').value;
-  const message = document.getElementById('emailModalMessage').value;
-  // TODO: Implement your send email logic here (AJAX or form submit)
-  alert(`Email sent to ${recipient}!\n\nIntent: ${intent}\n\nMessage:\n${message}`);
-  closeEmailModal();
+  const recipient = document.getElementById('emailModalRecipient').value.trim();
+  const subject = document.getElementById('emailModalIntent').value.trim() || "No Subject";
+  const body = document.getElementById('emailModalMessage').value.trim();
+
+  if (!recipient || !body) {
+    alert("❗ Please fill recipient and message before sending.");
+    return;
+  }
+
+  fetch("http://localhost:8081/api/email/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      to: recipient,
+      subject: subject,
+      body: body
+    })
+  })
+    .then(response => {
+      if (!response.ok) throw new Error("Sending failed");
+      return response.text();
+    })
+    .then(msg => {
+      alert(msg || "✅ Email sent!");
+      closeEmailModal();
+    })
+    .catch(error => {
+      alert("❌ Failed to send email.");
+      console.error("Email Error:", error);
+    });
 }
