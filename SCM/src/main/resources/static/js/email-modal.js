@@ -12,14 +12,29 @@ function closeEmailModal() {
 
 function generateEmailWithAI() {
   const intent = document.getElementById('emailModalIntent').value;
+  const recipient = document.getElementById('emailModalRecipient').value;
   const messageBox = document.getElementById('emailModalMessage');
-  if (!intent) {
-    messageBox.value = "Please enter an intent first.";
+
+  if (!intent || !recipient) {
+    messageBox.value = "Please enter both intent and recipient.";
     return;
   }
-  // Simulate AI generation (replace with real API if needed)
-  messageBox.value = `Hi,\n\nI would like to ${intent}.\n\nBest regards,\n[Your Name]`;
+
+  fetch("/api/email/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ recipientName: recipient, intent: intent })
+  })
+  .then(response => response.json())
+  .then(data => {
+    messageBox.value = data.message;
+  })
+  .catch(error => {
+    messageBox.value = "Failed to generate email.";
+    console.error(error);
+  });
 }
+
 
 function sendEmailFromModal() {
   const recipient = document.getElementById('emailModalRecipient').value;
