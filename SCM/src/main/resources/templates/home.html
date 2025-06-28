@@ -1,109 +1,87 @@
 <!DOCTYPE html>
-<html
-        lang="en"
-        th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
->
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
 <head>
   <title>Home page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
-<body>
-<div id="content" class="border">
+<body class="bg-gray-50">
+<div id="content" class="min-h-screen flex flex-col">
   <!-- Banner Section -->
-  <section class="bg-blue-600 text-white py-20 animate__animated animate__fadeInDown">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">Welcome to Contact Manager</h2>
-      <p class="text-lg mb-8">Manage all your contacts effortlessly and securely in one place.</p>
-      <a href="#"
-         class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Get
-        Started</a>
+  <section class="bg-gradient-to-r from-purple-700 via-pink-600 to-blue-600 text-white py-24 shadow-xl relative overflow-hidden">
+    <div class="container mx-auto text-center z-10 relative">
+      <h2 class="text-5xl font-extrabold mb-4 drop-shadow-lg animate__animated animate__fadeInDown">Welcome to <span class="text-yellow-300">Contact Manager</span></h2>
+      <p class="text-xl mb-10 animate__animated animate__fadeInDown">Manage all your contacts effortlessly and securely in one place.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/login" class="bg-white text-purple-700 px-8 py-3 rounded-full font-bold shadow hover:bg-purple-100 transition text-lg animate__animated animate__fadeInLeft">Get Started</a>
+        <a href="/register" class="bg-gradient-to-r from-yellow-400 to-pink-500 px-8 py-3 rounded-full font-bold text-white transition text-lg animate__animated animate__fadeInRight">Create an Account</a>
+      </div>
     </div>
   </section>
 
   <!-- Features Section -->
+  <section class="py-20 bg-gradient-to-br from-purple-50 via-white to-pink-50 relative">
+    <div class="absolute inset-0 pointer-events-none">
+      <svg class="w-full h-full" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f3e8ff" fill-opacity="0.5" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,154.7C840,149,960,171,1080,181.3C1200,192,1320,192,1380,192L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+      </svg>
+    </div>
+    <div class="container mx-auto text-center relative z-10"></div></svg>
   <section class="py-20 bg-white">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-12 animate__animated animate__fadeInUp">Features</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <i class="fas fa-address-book text-blue-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Easy Contact Management</h3>
-          <p class="text-gray-600">Add, edit, and organize your contacts in a user-friendly interface.</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-10 text-purple-800 tracking-tight animate__animated animate__fadeInUp">
+        Why Choose <span class="text-pink-600">Contact Manager?</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border-t-4 border-purple-400">
+          <i class="fas fa-address-book text-purple-600 text-5xl mb-5 animate__animated animate__fadeIn"></i>
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">Effortless Contact Management</h3>
+          <p class="text-gray-500 text-base">Easily add, edit, and organize your contacts with a clean, intuitive interface designed for productivity.</p>
         </div>
-        <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <i class="fas fa-lock text-blue-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Secure Storage</h3>
-          <p class="text-gray-600">Your data is protected with top-level encryption and security measures.</p>
+        <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border-t-4 border-pink-400">
+          <i class="fas fa-shield-alt text-pink-400 text-5xl mb-5"></i>
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">Robust Security</h3>
+          <p class="text-gray-500 text-base">Your data stays safe with industry-leading encryption and privacy-first security practices.</p>
         </div>
-        <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <i class="fas fa-globe text-blue-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">24/7 Access</h3>
-          <p class="text-gray-600">Access your contacts anytime, anywhere from any device.</p>
+        <div class="p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border-t-4 border-blue-400">
+          <i class="fas fa-globe text-blue-600 text-5xl mb-5 animate__animated animate__fadeIn"></i>
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">Anytime, Anywhere Access</h3>
+          <p class="text-gray-500 text-base">Stay connected and manage your contacts from any device, wherever you are, 24/7.</p>
+        </div>
+        <!-- Unique Feature -->
+        <div class="p-8 bg-gradient-to-b from-indigo-700 via-purple-800 to-pink-700 rounded-2xl shadow-xl border-t-4 border-yellow-300 animate__animated animate__pulse">
+          <i class="fas fa-envelope-open-text text-yellow-300 text-5xl mb-5"></i>
+          <h3 class="text-xl font-bold text-yellow-300 mb-2">AI Email Composer</h3>
+          <p class="text-gray-500  text-base">Craft professional, personalized emails instantly with our smart AI-powered composer—save time and connect smarter.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action Section -->
-  <section class="bg-blue-600 text-white py-20 animate__animated animate__fadeInUp">
+  <!-- Call to Action -->
+  <section class="bg-gradient-to-r from-pink-600 to-purple-600 text-white py-20">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">Ready to Manage Your Contacts?</h2>
-      <p class="text-lg mb-8">Sign up today and experience the easiest way to manage your contacts.</p>
-      <a href="#"
-         class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Create
-        an Account</a>
+      <h2 class="text-3xl font-extrabold mb-4">Ready to Manage Your Contacts Smarter?</h2>
+      <p class="text-lg mb-8">Experience the power of AI-driven contact communication today.</p>
+      <a href="/register" class="bg-white text-purple-700 px-8 py-3 rounded-full font-bold shadow hover:bg-purple-100 transition text-lg">Create an Account</a>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="py-20 bg-white">
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 mt-auto">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-12 animate__animated animate__fadeInUp">What Our Users Say</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <p class="text-gray-600 italic">"Contact Manager has changed the way I organize my contacts. It's
-            fast, secure, and incredibly easy to use!"</p>
-          <h4 class="text-lg font-semibold mt-4">- John Doe</h4>
-        </div>
-        <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <p class="text-gray-600 italic">"A fantastic app with great features! I love the 24/7 access and
-            secure storage options."</p>
-          <h4 class="text-lg font-semibold mt-4">- Jane Smith</h4>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Contact Section -->
-  <section class="py-20   bg-gray-100 animate__animated animate__fadeInUp">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-12">Get in Touch</h2>
-      <form class="max-w-lg mx-auto">
-        <input type="text" placeholder="Your Name" class="w-full px-4 py-2 mb-4 border border-gray-300 rounded">
-        <input type="email" placeholder="Your Email"
-               class="w-full px-4 py-2 mb-4 border border-gray-300 rounded">
-        <textarea placeholder="Your Message"
-                  class="w-full px-4 py-2 mb-4 border border-gray-300 rounded"></textarea>
-        <button type="submit"
-                class="bg-blue-600 text-white px-6 py-3 rounded font-semibold hover:bg-blue-700 transition duration-300">
-          Send Message
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer Section -->
-  <footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto text-center">
-      <p>&copy; 2024 Contact Manager. All rights reserved.</p>
-      <p>Follow us on <a href="#" class="text-blue-400">Facebook</a>, <a href="#"
-                                                                         class="text-blue-400">Twitter</a>, and <a
-              href="#" class="text-blue-400">Instagram</a>.</p>
+      <p class="mb-2">&copy; 2025 Contact Manager. All rights reserved.</p>
+      <p>
+        Follow us on
+        <a href="#" class="text-blue-400 hover:underline">Facebook</a>,
+        <a href="#" class="text-blue-400 hover:underline">Twitter</a>, and
+        <a href="#" class="text-blue-400 hover:underline">Instagram</a>.
+      </p>
     </div>
   </footer>
 </div>
 <script>
-  console.log("Home page");
+  console.log("Home page loaded");
 </script>
 </body>
 </html>

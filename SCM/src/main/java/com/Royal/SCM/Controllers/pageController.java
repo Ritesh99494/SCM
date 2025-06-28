@@ -37,11 +37,10 @@ public class pageController {
        model.addAttribute("age", 25);
               return "home";
  }
-    @RequestMapping("/a")
-    public String about() {
-    
-        System.out.println("about page");
-        return "about";
+@GetMapping("/about")
+public String about() {
+    System.out.println("about page");
+    return "about";
 }
 
   // services

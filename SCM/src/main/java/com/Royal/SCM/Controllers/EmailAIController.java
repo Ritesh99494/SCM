@@ -31,8 +31,12 @@ private String GEMINI_API_KEY;
 
     @PostMapping("/generate")
     public ResponseEntity<EmailResponse> generateEmail(@RequestBody IntentRequest request) {
-        String prompt = "Write a professional email to " + request.getRecipientName()
-                + " with the intent: " + request.getIntent();
+        String prompt = """
+You are a polite and professional assistant. Write a short and clear email that the user can send to %s for the following purpose: "%s".
+
+Use a friendly greeting, 2-3 line message, and a sign-off like 'Regards' or 'Best wishes'.
+""".formatted(request.getRecipientName(), request.getIntent());
+
 
         String aiGenerated = callGemini(prompt);
         return ResponseEntity.ok(new EmailResponse(aiGenerated));
@@ -71,5 +75,5 @@ private String callGemini(String prompt) {
     }
 }
 
-    }
+}
 

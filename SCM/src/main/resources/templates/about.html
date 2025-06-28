@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base ::parent(~{::#content},~{::title},~{::script})}"  >
+<html lang="en" th:replace="~{base :: parent(~{::#content})}">
 <head>
-    <title>About page</title>
+    <meta charset="UTF-8">
+    <title>About Us | Smart Contact Manager</title>
 </head>
 <body>
-    <div id=" content"></div>
-    <h1>Welcome to about page</h1>
-    <script> console.log("about page")</script>
+<section id="content" class="bg-white py-16 px-6 md:px-24">
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-indigo-700">About Smart Contact Manager</h1>
+        <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+            Empowering individuals and businesses to manage their contacts smartly, securely, and efficiently in the cloud.
+        </p>
+    </div>
+
+    <!-- Mission Statement -->
+    <div class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+            At Smart Contact Manager, our goal is to simplify and elevate the way people organize and interact with their personal and professional networks.
+            We believe that contact management should be intelligent, intuitive, and accessible — enabling users to focus more on relationships and less on manual tracking.
+        </p>
+    </div>
+
+    <!-- Features Overview -->
+    <div class="grid md:grid-cols-2 gap-10 mb-16 items-center">
+        <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">What We Offer</h2>
+            <ul class="space-y-4 text-gray-700 text-lg list-disc list-inside">
+                <li>Secure and personalized contact management dashboard</li>
+                <li>Easy organization and quick access to your contacts</li>
+                <li>AI-powered email composer for smart communication</li>
+                <li>Cloud-based image and data storage for accessibility anywhere</li>
+                <li>Privacy-focused design with role-based access control</li>
+            </ul>
+        </div>
+        <div>
+            <img src="/images/business-people.svg" alt="Business Illustration" class="rounded-xl shadow-md w-full">
+        </div>
+    </div>
+
+    <!-- AI Feature Highlight -->
+    <div class="bg-indigo-50 p-8 rounded-2xl shadow-md mb-16">
+        <h2 class="text-2xl font-semibold text-indigo-700 mb-4">Smarter Communication with AI</h2>
+        <p class="text-gray-700 text-lg">
+            Our intelligent email composer helps users craft professional, personalized emails with just a few clicks.
+            Powered by AI, it understands your intent and generates context-aware messages to streamline your outreach — saving time and enhancing engagement.
+        </p>
+    </div>
+
+    <!-- Why SCM -->
+    <div class="mb-20">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Why Choose Smart Contact Manager?</h2>
+        <div class="grid md:grid-cols-3 gap-6 text-gray-700 text-lg">
+            <div class="bg-white shadow p-6 rounded-xl border">
+                <h3 class="font-bold text-indigo-600 mb-2">Efficiency</h3>
+                <p>Access, organize, and update your contacts in seconds — from any device, anywhere.</p>
+            </div>
+            <div class="bg-white shadow p-6 rounded-xl border">
+                <h3 class="font-bold text-indigo-600 mb-2">Security</h3>
+                <p>Your data is protected through secure access control and encrypted storage systems.</p>
+            </div>
+            <div class="bg-white shadow p-6 rounded-xl border">
+                <h3 class="font-bold text-indigo-600 mb-2">Intelligence</h3>
+                <p>Let AI handle email composition and contact suggestions, making you more productive.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center">
+        <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Ready to simplify your contact management?</h3>
+        <p class="text-lg text-gray-700 mb-6">Join the growing number of users who trust SCM to manage their networks smarter.</p>
+        <a href="/register" class="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg shadow-md hover:bg-indigo-700 transition">
+            Get Started Today
+        </a>
+    </div>
+</section>
 </body>
 </html>
