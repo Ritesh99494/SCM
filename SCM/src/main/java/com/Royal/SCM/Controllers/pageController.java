@@ -37,11 +37,14 @@ public class pageController {
        model.addAttribute("age", 25);
               return "home";
  }
-@GetMapping("/about")
-public String about() {
-    System.out.println("about page");
-    return "about";
-}
+ // about route
+
+    @RequestMapping("/about")
+    public String aboutPage(Model model) {
+        model.addAttribute("isLogin", true);
+        System.out.println("About page loading");
+        return "about";
+    }
 
   // services
 
