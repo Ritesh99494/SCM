@@ -135,6 +135,12 @@
             />
           </svg>
           <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
+          <form data-th-action="@{'/do-logout'}" method="post" class="ml-2">
+            <button type="submit" class="text-red-600 hover:underline bg-transparent border-none p-0 m-0 cursor-pointer">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span class="sr-only">Logout</span>
+            </button>
+          </form>
         </a>
       </li>
       <li>
